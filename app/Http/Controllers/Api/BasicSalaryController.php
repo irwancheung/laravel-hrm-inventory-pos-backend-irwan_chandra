@@ -52,9 +52,7 @@ class BasicSalaryController extends Controller
         $basicSalary = \App\Models\BasicSalary::find($id);
 
         if (!$basicSalary) {
-            return response()->json([
-                'message' => 'Basic Salary not found',
-            ], 404);
+            return $this->notFoundResponse();
         }
 
         return $this->response->http200('Basic Salary fetched successfully', $basicSalary);
@@ -70,9 +68,7 @@ class BasicSalaryController extends Controller
         $basicSalary = \App\Models\BasicSalary::find($id);
 
         if (!$basicSalary) {
-            return response()->json([
-                'message' => 'Basic Salary not found',
-            ], 404);
+            return $this->notFoundResponse();
         }
 
         $basicSalary->basic_salary = $request->basic_salary;
@@ -88,9 +84,7 @@ class BasicSalaryController extends Controller
         $basicSalary = \App\Models\BasicSalary::find($id);
 
         if (!$basicSalary) {
-            return response()->json([
-                'message' => 'Basic Salary not found',
-            ], 404);
+            return $this->notFoundResponse();
         }
 
         $basicSalary->delete();
@@ -100,5 +94,10 @@ class BasicSalaryController extends Controller
         // ], 200);
 
         return $this->response->http200('Basic Salary deleted successfully');
+    }
+
+    private function notFoundResponse()
+    {
+        return $this->response->http404('Basic salary not found');
     }
 }
