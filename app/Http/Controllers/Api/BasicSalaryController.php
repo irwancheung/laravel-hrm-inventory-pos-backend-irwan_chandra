@@ -89,10 +89,6 @@ class BasicSalaryController extends Controller
 
         $basicSalary->delete();
 
-        // return response()->json([
-        //     'message' => 'Basic Salary deleted successfully',
-        // ], 200);
-
         return $this->response->http200('Basic Salary deleted successfully');
     }
 
