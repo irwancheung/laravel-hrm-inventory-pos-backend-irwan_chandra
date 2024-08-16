@@ -3,15 +3,19 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
-
 // login
 Route::post('/login', [App\Http\Controllers\Api\AuthController::class, 'login']);
 
 // logout
 Route::post('/logout', [App\Http\Controllers\Api\AuthController::class, 'logout'])->middleware('auth:sanctum');
+
+// user
+Route::get('/user', function (Request $request) {
+    return $request->user();
+})->middleware('auth:sanctum');
+
+// company
+Route::put('/company', [App\Http\Controllers\Api\CompanyController::class, 'update'])->middleware('auth:sanctum');
 
 // roles
 Route::apiResource('/roles', App\Http\Controllers\Api\RoleController::class)->middleware('auth:sanctum');
@@ -28,8 +32,6 @@ Route::apiResource('/shifts', App\Http\Controllers\Api\ShiftController::class)->
 // basic salaries
 Route::apiResource('/basic-salaries', App\Http\Controllers\Api\BasicSalaryController::class)->middleware('auth:sanctum');
 
-// companies
-Route::put('/companies', [App\Http\Controllers\Api\CompanyController::class, 'update'])->middleware('auth:sanctum');
 
 // holidays
 Route::apiResource('/holidays', App\Http\Controllers\Api\HolidayController::class)->middleware('auth:sanctum');

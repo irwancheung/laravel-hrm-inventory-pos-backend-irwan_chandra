@@ -9,7 +9,7 @@ use App\Services\HttpResponseService;
 
 class BasicSalaryController extends Controller
 {
-    protected $response;
+    private $response;
 
     public function __construct(HttpResponseService $httpResponseService)
     {
@@ -19,7 +19,7 @@ class BasicSalaryController extends Controller
     // index
     public function index()
     {
-        $basicSalaries = \App\Models\BasicSalary::all();
+        $basicSalaries = BasicSalary::all();
 
         return $this->response->http200(
             'Basic Salaries fetched successfully',
@@ -49,7 +49,7 @@ class BasicSalaryController extends Controller
     // show
     public function show($id)
     {
-        $basicSalary = \App\Models\BasicSalary::find($id);
+        $basicSalary = BasicSalary::find($id);
 
         if (!$basicSalary) {
             return $this->notFoundResponse();
@@ -65,7 +65,7 @@ class BasicSalaryController extends Controller
             'user_id' => 'required',
         ]);
 
-        $basicSalary = \App\Models\BasicSalary::find($id);
+        $basicSalary = BasicSalary::find($id);
 
         if (!$basicSalary) {
             return $this->notFoundResponse();
@@ -81,7 +81,7 @@ class BasicSalaryController extends Controller
     // destroy
     public function destroy($id)
     {
-        $basicSalary = \App\Models\BasicSalary::find($id);
+        $basicSalary = BasicSalary::find($id);
 
         if (!$basicSalary) {
             return $this->notFoundResponse();

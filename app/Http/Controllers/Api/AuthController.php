@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    protected $response;
+    private $response;
 
     public function __construct(HttpResponseService $httpResponseService)
     {

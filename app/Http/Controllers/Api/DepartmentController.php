@@ -9,7 +9,7 @@ use App\Services\HttpResponseService;
 
 class DepartmentController extends Controller
 {
-    protected $response;
+    private $response;
 
     public function __construct(HttpResponseService $httpResponseService)
     {
