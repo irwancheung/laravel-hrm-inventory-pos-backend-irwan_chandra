@@ -82,6 +82,6 @@ class CompanyController extends Controller
         $company->updated_at = now();
         $company->save();
 
-        return $this->response->http200('Company updated successfully', $company);
+        return $this->response->success('Company updated successfully', $company);
     }
 }

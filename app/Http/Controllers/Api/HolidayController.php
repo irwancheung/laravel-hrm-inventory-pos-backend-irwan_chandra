@@ -21,7 +21,7 @@ class HolidayController extends Controller
     {
         $holidays = Holiday::all();
 
-        return $this->response->http200('Holidays fetched successfully', ['holidays' => $holidays]);
+        return $this->response->success('Holidays fetched successfully', ['holidays' => $holidays]);
     }
 
     // store
@@ -47,7 +47,7 @@ class HolidayController extends Controller
         $holiday->is_weekend = $request->is_weekend;
         $holiday->save();
 
-        return $this->response->http201('Holiday created successfully', $holiday);
+        return $this->response->created('Holiday created successfully', $holiday);
     }
 
     // show
@@ -59,7 +59,7 @@ class HolidayController extends Controller
             return $this->notFoundResponse();
         }
 
-        return $this->response->http200('Holiday fetched successfully', $holiday);
+        return $this->response->success('Holiday fetched successfully', $holiday);
     }
 
     // update
@@ -86,7 +86,7 @@ class HolidayController extends Controller
         $holiday->is_weekend = $request->is_weekend;
         $holiday->save();
 
-        return $this->response->http200('Holiday updated successfully', $holiday);
+        return $this->response->success('Holiday updated successfully', $holiday);
     }
 
     // destroy
@@ -100,11 +100,11 @@ class HolidayController extends Controller
 
         $holiday->delete();
 
-        return $this->response->http200('Holiday deleted successfully');
+        return $this->response->success('Holiday deleted successfully');
     }
 
     private function notFoundResponse()
     {
-        return $this->response->http404('Holiday not found');
+        return $this->response->notFound('Holiday not found');
     }
 }

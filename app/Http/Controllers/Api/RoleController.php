@@ -21,7 +21,7 @@ class RoleController extends Controller
     {
         $roles = Role::all();
 
-        return $this->response->http200('Roles fetched successfully', ['roles' => $roles]);
+        return $this->response->success('Roles fetched successfully', ['roles' => $roles]);
     }
 
     // store
@@ -43,7 +43,7 @@ class RoleController extends Controller
         //     'data' => $role,
         // ], 201);
 
-        return $this->response->http201('Role created successfully', $role);
+        return $this->response->created('Role created successfully', $role);
     }
 
     // show
@@ -55,7 +55,7 @@ class RoleController extends Controller
             return $this->notFoundResponse();
         }
 
-        return $this->response->http200('Role fetched successfully', $role);
+        return $this->response->success('Role fetched successfully', $role);
     }
 
     // update
@@ -79,7 +79,7 @@ class RoleController extends Controller
 
         $role->permissions()->sync($request->permissionIds);
 
-        return $this->response->http200('Role updated successfully', $role);
+        return $this->response->success('Role updated successfully', $role);
     }
 
     // destroy
@@ -93,11 +93,11 @@ class RoleController extends Controller
 
         $role->delete();
 
-        return $this->response->http200('Role deleted successfully');
+        return $this->response->success('Role deleted successfully');
     }
 
     private function notFoundResponse()
     {
-        return $this->response->http404('Role not found');
+        return $this->response->notFound('Role not found');
     }
 }

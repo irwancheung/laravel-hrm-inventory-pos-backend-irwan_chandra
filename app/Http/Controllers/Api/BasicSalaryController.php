@@ -21,7 +21,7 @@ class BasicSalaryController extends Controller
     {
         $basicSalaries = BasicSalary::all();
 
-        return $this->response->http200(
+        return $this->response->success(
             'Basic Salaries fetched successfully',
             ['basic_salaries' => $basicSalaries]
         );
@@ -43,7 +43,7 @@ class BasicSalaryController extends Controller
         $basicSalary->basic_salary = $request->basic_salary;
         $basicSalary->save();
 
-        return $this->response->http201('Basic Salary created successfully', $basicSalary);
+        return $this->response->created('Basic Salary created successfully', $basicSalary);
     }
 
     // show
@@ -55,7 +55,7 @@ class BasicSalaryController extends Controller
             return $this->notFoundResponse();
         }
 
-        return $this->response->http200('Basic Salary fetched successfully', $basicSalary);
+        return $this->response->success('Basic Salary fetched successfully', $basicSalary);
     }
     // update
     public function update(Request $request, $id)
@@ -75,7 +75,7 @@ class BasicSalaryController extends Controller
         $basicSalary->user_by = $request->user_id;
         $basicSalary->save();
 
-        return $this->response->http200('Basic Salary updated successfully', $basicSalary);
+        return $this->response->success('Basic Salary updated successfully', $basicSalary);
     }
 
     // destroy
@@ -89,11 +89,11 @@ class BasicSalaryController extends Controller
 
         $basicSalary->delete();
 
-        return $this->response->http200('Basic Salary deleted successfully');
+        return $this->response->success('Basic Salary deleted successfully');
     }
 
     private function notFoundResponse()
     {
-        return $this->response->http404('Basic salary not found');
+        return $this->response->notFound('Basic salary not found');
     }
 }

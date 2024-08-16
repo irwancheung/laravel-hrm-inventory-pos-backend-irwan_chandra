@@ -21,7 +21,7 @@ class DepartmentController extends Controller
     {
         $departments = Department::all();
 
-        return $this->response->http200('Departments fetched successfully', ['departments' =>  $departments]);
+        return $this->response->success('Departments fetched successfully', ['departments' =>  $departments]);
     }
 
     // store
@@ -40,7 +40,7 @@ class DepartmentController extends Controller
         $department->description = $request->description;
         $department->save();
 
-        return $this->response->http201('Department created successfully', ['department' =>  $department]);
+        return $this->response->created('Department created successfully', ['department' =>  $department]);
     }
 
     // show
@@ -52,7 +52,7 @@ class DepartmentController extends Controller
             return $this->notFoundResponse();
         }
 
-        return $this->response->http200('Department fetched successfully',   $department);
+        return $this->response->success('Department fetched successfully',   $department);
     }
 
     // update
@@ -72,7 +72,7 @@ class DepartmentController extends Controller
         $department->description = $request->description;
         $department->save();
 
-        return $this->response->http200('Department updated successfully', $department);
+        return $this->response->success('Department updated successfully', $department);
     }
 
     // destroy
@@ -86,11 +86,11 @@ class DepartmentController extends Controller
 
         $department->delete();
 
-        return $this->response->http200('Department deleted successfully');
+        return $this->response->success('Department deleted successfully');
     }
 
     private function notFoundResponse()
     {
-        return $this->response->http404('Department not found');
+        return $this->response->notFound('Department not found');
     }
 }

@@ -21,7 +21,7 @@ class ShiftController extends Controller
     {
         $shifts = Shift::all();
 
-        return $this->response->http200('Shifts retrieved successfully', ['shifts' => $shifts]);
+        return $this->response->success('Shifts retrieved successfully', ['shifts' => $shifts]);
     }
 
     // store
@@ -46,7 +46,7 @@ class ShiftController extends Controller
         $shift->late_mark_after = $request->late_mark_after;
         $shift->save();
 
-        return $this->response->http201('Shift created successfully', $shift);
+        return $this->response->created('Shift created successfully', $shift);
     }
 
     // show
@@ -58,7 +58,7 @@ class ShiftController extends Controller
             return $this->notFoundResponse();
         }
 
-        return $this->response->http200('Shift fetched successfully', $shift);
+        return $this->response->success('Shift fetched successfully', $shift);
     }
 
     // update
@@ -84,7 +84,7 @@ class ShiftController extends Controller
         $shift->late_mark_after = $request->late_mark_after;
         $shift->save();
 
-        return $this->response->http200('Shift updated successfully', $shift);
+        return $this->response->success('Shift updated successfully', $shift);
     }
 
     // destroy
@@ -98,11 +98,11 @@ class ShiftController extends Controller
 
         $shift->delete();
 
-        return $this->response->http200('Shift deleted successfully');
+        return $this->response->success('Shift deleted successfully');
     }
 
     private function notFoundResponse()
     {
-        return $this->response->http404('Shift not found');
+        return $this->response->notFound('Shift not found');
     }
 }

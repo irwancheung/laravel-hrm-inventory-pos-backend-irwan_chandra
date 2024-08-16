@@ -28,12 +28,12 @@ class AuthController extends Controller
         $user = User::where('email', $request->email)->first();
 
         if (!$user || !Hash::check($request->password, $user->password)) {
-            return $this->response->http401('The provided credentials are incorrect. Please try again.');
+            return $this->response->unauthorized('The provided credentials are incorrect. Please try again.');
         }
 
         $token = $user->createToken($request->email)->plainTextToken;
 
-        return $this->response->http200(
+        return $this->response->success(
             'Logged in successfully',
             [
                 'user' => $user,
@@ -47,6 +47,6 @@ class AuthController extends Controller
     {
         $request->user()->currentAccessToken()->delete();
 
-        return $this->response->http200('Logged out successfully', null);
+        return $this->response->success('Logged out successfully', null);
     }
 }

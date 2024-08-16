@@ -21,7 +21,7 @@ class DesignationController extends Controller
     {
         $designations = Designation::all();
 
-        return $this->response->http200('Designations fetched successfully', ['designations' =>  $designations]);
+        return $this->response->success('Designations fetched successfully', ['designations' =>  $designations]);
     }
 
     // store
@@ -40,7 +40,7 @@ class DesignationController extends Controller
         $designation->description = $request->description;
         $designation->save();
 
-        return $this->response->http201('Designation created successfully', $designation);
+        return $this->response->created('Designation created successfully', $designation);
     }
 
     // show
@@ -52,7 +52,7 @@ class DesignationController extends Controller
             return $this->notFoundResponse();
         }
 
-        return $this->response->http200('Designation fetched successfully', $designation);
+        return $this->response->success('Designation fetched successfully', $designation);
     }
 
     // update
@@ -72,7 +72,7 @@ class DesignationController extends Controller
         $designation->description = $request->description;
         $designation->save();
 
-        return $this->response->http200('Designation updated successfully', $designation);
+        return $this->response->success('Designation updated successfully', $designation);
     }
 
     // destroy
@@ -86,11 +86,11 @@ class DesignationController extends Controller
 
         $designation->delete();
 
-        return $this->response->http200('Designation deleted successfully');
+        return $this->response->success('Designation deleted successfully');
     }
 
     private function notFoundResponse()
     {
-        return $this->response->http404('Designation not found');
+        return $this->response->notFound('Designation not found');
     }
 }
