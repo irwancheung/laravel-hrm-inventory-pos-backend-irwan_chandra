@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Permission;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -41,6 +40,10 @@ class DatabaseSeeder extends Seeder
             BasicSalarySeeder::class,
             RoleUserSeeder::class,
             HolidaySeeder::class,
+            LeaveTypeSeeder::class,
+            LeaveSeeder::class,
+            AttendanceSeeder::class,
+            PayrollSeeder::class,
         ]);
     }
 }

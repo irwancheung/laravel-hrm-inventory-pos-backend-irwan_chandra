@@ -32,6 +32,17 @@ Route::apiResource('/shifts', App\Http\Controllers\Api\ShiftController::class)->
 // basic salaries
 Route::apiResource('/basic-salaries', App\Http\Controllers\Api\BasicSalaryController::class)->middleware('auth:sanctum');
 
-
 // holidays
 Route::apiResource('/holidays', App\Http\Controllers\Api\HolidayController::class)->middleware('auth:sanctum');
+
+// leave types
+Route::apiResource('/leave-types', App\Http\Controllers\Api\LeaveTypeController::class)->middleware('auth:sanctum');
+
+// leaves
+Route::apiResource('/leaves', App\Http\Controllers\Api\LeaveController::class)->middleware('auth:sanctum');
+
+// attendances
+Route::apiResource('/attendances', App\Http\Controllers\Api\AttendanceController::class)->middleware('auth:sanctum');
+
+// payrolls
+Route::get('/payrolls', [App\Http\Controllers\Api\PayrollController::class, 'index'])->middleware('auth:sanctum');
