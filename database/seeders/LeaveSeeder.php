@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Leave;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class LeaveSeeder extends Seeder
 {
