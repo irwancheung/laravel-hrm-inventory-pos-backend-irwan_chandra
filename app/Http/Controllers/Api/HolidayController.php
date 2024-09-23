@@ -28,11 +28,11 @@ class HolidayController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name',
-            'date',
-            'month',
-            'year',
-            'is_weekend',
+            'name' => 'required',
+            'date' => 'required',
+            'month' => 'required',
+            'year' => 'required',
+            'is_weekend' => 'required',
         ]);
 
         $user = $request->user();

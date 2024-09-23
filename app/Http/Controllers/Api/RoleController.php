@@ -63,7 +63,7 @@ class RoleController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'permissionIds' => 'required|array',
+            // 'permissionIds' => 'required|array',
         ]);
 
         $role = Role::find($id);
@@ -77,7 +77,7 @@ class RoleController extends Controller
         $role->description = $request->description;
         $role->save();
 
-        $role->permissions()->sync($request->permissionIds);
+        // $role->permissions()->sync($request->permissionIds);
 
         return $this->response->success('Role updated successfully', $role);
     }

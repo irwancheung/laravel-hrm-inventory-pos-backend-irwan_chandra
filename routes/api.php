@@ -15,6 +15,8 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 // company
+
+Route::get('/company', [App\Http\Controllers\Api\CompanyController::class, 'show'])->middleware('auth:sanctum');
 Route::put('/company', [App\Http\Controllers\Api\CompanyController::class, 'update'])->middleware('auth:sanctum');
 
 // roles
@@ -46,3 +48,6 @@ Route::apiResource('/attendances', App\Http\Controllers\Api\AttendanceController
 
 // payrolls
 Route::apiResource('/payrolls', App\Http\Controllers\Api\PayrollController::class)->middleware('auth:sanctum');
+
+// staffs
+Route::apiResource('/staffs', App\Http\Controllers\Api\StaffController::class)->middleware('auth:sanctum');

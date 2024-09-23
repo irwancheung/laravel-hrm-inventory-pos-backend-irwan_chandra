@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Database\Seeders\CompanySeeder;
@@ -14,23 +15,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory()->create([
-            'name' => 'Irwan Chandra',
-            'email' => 'irwancheung@gmail.com',
-            'password' => Hash::make('123456'),
-        ]);
 
-        User::factory()->create(
-            [
-                'name' => 'Cindy',
-                'email' => 'cindy@gmail.com',
-                'password' => Hash::make('123456'),
-            ]
-        );
 
         $this->call([
             CompanySeeder::class,
             RoleSeeder::class,
+            UserSeeder::class,
             PermissionSeeder::class,
             PermissionRoleSeeder::class,
             DepartmentSeeder::class,

@@ -16,6 +16,14 @@ class CompanyController extends Controller
         $this->response = $httpResponseService;
     }
 
+    // index
+    public function show()
+    {
+        $company = Company::where('id', 1)->first();
+
+        return $this->response->success('Companies retrieved successfully', $company);
+    }
+
     public function update(Request $request)
     {
         $company = Company::where('id', 1)->first();
